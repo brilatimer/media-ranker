@@ -1,11 +1,16 @@
 <h2>Medias:</h2>
 
 <ul>
-  <% @medias.sort.each do |media|  %>
+  <% @medias.each do |media|  %>
     <li>
-      <%= link_to media.title, media_path(media), class:"link" %>
+      <%= link_to media.title, media_path(media.id), class:"link" %>
+      <%= link_to media.category, media_path(media.id), class:"link" %>
+      <%= link_to media.creator, media_path(media.id), class:"link" %>
+      <%= link_to media.publication_year, media_path(media.id), class:"link" %>
+
     </li>
   <% end %>
 </ul>
+
 
 
