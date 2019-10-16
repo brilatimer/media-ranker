@@ -29,3 +29,16 @@
 </ul>
 
 <h3>Movies</h3>
+<ul>
+  <% @works.where(category: 'movie' ).sort.each do |work|  %>
+    <li>
+      <%= link_to work.title, work_path(work.id), class:"link" %>
+      <%= work[:category] %>
+      <%= work[:creator] %>
+      <%= work[:publication_year] %>
+      <%= link_to "<button>Edit</button>".html_safe, edit_work_path(work) %>
+      <%= link_to "<button>Delete</button>".html_safe, work_path(work), method: :delete, data: {confirm: "Are you sure you want to delete this media entry?"}%>
+    </li>
+  <% end %>
+</ul>
+
