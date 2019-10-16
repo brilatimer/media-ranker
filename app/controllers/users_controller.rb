@@ -42,17 +42,17 @@ class UsersController < ApplicationController
     end
   end
   
-  <h2>You are logged in as user <%= @current_user.username %></h2>
+  # <h2>You are logged in as user <%= @current_user.username %></h2>
   
-  <!-- app/views/users/login_form.html.erb -->
-  <%= form_with model: @user, url: login_path do |f| %>
-    <%= f.label :username %>
-    <%= f.text_field :username %>
-    
-    <%= f.submit "Log In" %>
-    <% end %>
-  end
+  # <!-- app/views/users/login_form.html.erb -->
+  # <%= form_with model: @user, url: login_path do |f| %>
+  #   <%= f.label :username %>
+  #   <%= f.text_field :username %>
+  
+  #   <%= f.submit "Log In" %>
+  #   <% end %>
+  # end
   
   
-  # need to add logout option
+  # # need to add logout option
   
