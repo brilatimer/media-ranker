@@ -1,5 +1,5 @@
-<%= form_with model: @work, class: 'create-media' do |f| %>
-<p>Please provide the following information to add your new media to our database:</p>
+<%= form_with model: @work, class: 'media-form' do |f| %>
+<p>Please provide the following information to <%= message %>:</p>
 
   <%= f.label :category %>
   <%= f.text_field :category %>
@@ -10,9 +10,12 @@
   <%= f.label :creator %>
   <%= f.text_field :creator %>
 
-    <%= f.label :publication_year %>
+  <%= f.label :publication_year %>
   <%= f.text_field :publication_year %>
 
-  <%= f.submit "Save media", class: "media-button" %>
+  <%= f.label :description %>
+  <%= f.text_field :description %>
+
+  <%= f.submit "#{button_action} media", class: "media-button" %>
 
 <% end %>

@@ -7,6 +7,7 @@
 <p><%= link_to "Return to Media List", works_path %></p>
 
 <h1><%= @work[:title] %></h1>
+<h3>Category: <%= @work[:category] %></h3>
 <h3>Created by: <%= @work[:creator] %></h3>
 <h3>Published: <%= @work[:publication_year] %></h3>
 <h3>Description: <%= @work[:description] %></h3>

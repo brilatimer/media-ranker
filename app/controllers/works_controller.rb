@@ -48,6 +48,7 @@ class WorksController < ApplicationController
       head :not_found
       return
     end
+    puts work_params
     
     if @work.update(work_params)
       redirect_to work_path(@work.id)
@@ -75,6 +76,6 @@ class WorksController < ApplicationController
   private
   
   def work_params
-    return params.require(:work).permit(:category, :title, :creator, :publication_year)
+    return params.require(:work).permit(:category, :title, :creator, :publication_year, :description)
   end
 end
