@@ -10,32 +10,33 @@ require 'csv'
 MEDIA_FILE = Rails.root.join('db','media-seeds.csv')
 puts "Loadnig data from #{MEDIA_FILE}"
 
-media_failures = []
+work_failures = []
 
 CSV.foreach(MEDIA_FILE, headers: true) do |row|
   # puts row["title"]
   # puts row.to_h
-  media = Media.new
-  # media.votes = row['votes']
-  # media.upvote = row['upvote']
-  media.title = row['title']
-  media.creator = row['creator']
-  media.publication_year = row['publication_year']
-  media.description = row['description']
-  
-  # media.active = false
-  successful = media.save
+  work = Work.new
+  # work.votes = row['votes']
+  # work.upvote = row['upvote']
+  work.title = row['title']
+  work.category  = row['category']
+  work.creator = row['creator']
+  work.publication_year = row['publication_year']
+  work.description = row['description']
+
+  # work.active = false
+  successful = work.save
   if !successful
-    media_failures << media
-    puts "Failed to save media: #{media.inspect}"
+    work_failures << work
+    puts "Failed to save work: #{work.inspect}"
   else
-    puts "Created media: #{media.inspect}"
+    puts "Created work: #{work.inspect}"
   end
 end
 
-puts "Added #{Media.count} media records"
-puts "#{media_failures.length} medias failed to save"
+puts "Added #{Work.count} work records"
+puts "#{work_failures.length} works failed to save"
 
 
 
-# Media.create(row.to_h)
+# Work.create(row.to_h)
