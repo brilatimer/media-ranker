@@ -1,0 +1,7 @@
+<%= link_to "Edit media", edit_media_path(@media), class:"link" %>
+<br><br>
+<%= link_to "Delete media", media_path(@media), class:"link", method: :delete, data: {confirm: "Please confirm!"} %>
+<br><br>
+<%= link_to "See All medias", medias_path, class:"link" %>
+<br><br>
+<p><%= link_to "Return to Media List", medias_path %></p>

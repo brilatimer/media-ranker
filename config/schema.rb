@@ -10,7 +10,4 @@ ActiveRecord::Schema.define(version: 2019_10_07_233744) do
     t.integer "publication_year"
     t.string "description"
   end
-  
-  # add_foreign_key "trips", "drivers"
-  # add_foreign_key "trips", "passengers"
 end
