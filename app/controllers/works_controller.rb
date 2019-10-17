@@ -1,6 +1,7 @@
 class WorksController < ApplicationController
   def index
     @works = Work.all
+    @user = User.find(session[:user_id]) rescue nil
   end
   
   def show
@@ -68,13 +69,11 @@ class WorksController < ApplicationController
     end
     
     @work.destroy
-    
     redirect_to works_path
     return
   end
   
   private
-  
   def work_params
     return params.require(:work).permit(:category, :title, :creator, :publication_year, :description)
   end
