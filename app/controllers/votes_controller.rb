@@ -10,5 +10,7 @@ class VotesController < ApplicationController
     successful = vote.save
     
     redirect_to root_path
+    
+    Vote.find_by user_id: vote_by_work_id
   end
 end
