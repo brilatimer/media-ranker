@@ -42,17 +42,28 @@ class UsersController < ApplicationController
     end
   end
   
-  # <h2>You are logged in as user <%= @current_user.username %></h2>
-  
-  # <!-- app/views/users/login_form.html.erb -->
-  # <%= form_with model: @user, url: login_path do |f| %>
-  #   <%= f.label :username %>
-  #   <%= f.text_field :username %>
-  
-  #   <%= f.submit "Log In" %>
-  #   <% end %>
-  # end
-  
-  
-  # # need to add logout option
-  
+  def logout
+    session[:user_id] = nil
+    redirect_to root_path
+  end
+
+  def upvote
+    @user = User.find(params[:id])
+    @user.upvote_by current_user
+    redirect_to users_path
+  end
+end
+
+# <h2>You are logged in as user <%= @current_user.username %></h2>
+
+# <!-- app/views/users/login_form.html.erb -->
+# <%= form_with model: @user, url: login_path do |f| %>
+#   <%= f.label :username %>
+#   <%= f.text_field :username %>
+
+#   <%= f.submit "Log In" %>
+#   <% end %>
+# end
+
+
+# # # need to add logout option
