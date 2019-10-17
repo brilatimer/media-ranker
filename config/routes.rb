@@ -3,16 +3,12 @@ Rails.application.routes.draw do
   root 'works#index'
   resources :works
   
-  # resources :users do
-  #   member do
-  #     put "like", to: "links#upvote"
-  #     put "dislike", to: "links#downvote"
-  #   end
-  
   get "/login", to: "users#login_form", as: "login"
   post "/login", to: "users#login"
   post "/logout", to: "users#logout", as: "logout"
   get "/users/current", to: "users#current", as: "current_user"
+
+  get '/vote/:id', to: 'votes#vote_by_work_id', as: 'vote_by_work_id'
   
   # get '/users', to: 'users#index', as: 'users'
   # get '/users/new', to: 'users#new', as: 'new_user'
