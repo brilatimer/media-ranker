@@ -1,5 +1,7 @@
 <h2>Media Spotlight:</h2>
 
+
+
 <h3>Top Albums</h3>
 <ul>
   <% @works.where(category: 'album' ).limit(10).sort.each do |work|  %>
