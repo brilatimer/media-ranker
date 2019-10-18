@@ -7,11 +7,11 @@ Rails.application.routes.draw do
   post "/login", to: "users#login"
   post "/logout", to: "users#logout", as: "logout"
   get "/users/current", to: "users#current", as: "current_user"
-
+  
   get '/vote/:id', to: 'votes#vote_by_work_id', as: 'vote_by_work_id'
   get '/featured', to: 'featured#index'
-
-  # get '/users', to: 'users#index', as: 'users'
+  
+  get '/users', to: 'users#index', as: 'users'
   # get '/users/new', to: 'users#new', as: 'new_user'
   # post '/users', to: 'users#create'
   

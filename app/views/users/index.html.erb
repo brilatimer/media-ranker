@@ -1,1 +1,14 @@
-@links.each do |link| = link_to "upvote", like_link_path(link), method: :put
+<h2>List of Users:</h2>
+
+<ul>
+<% @users.sort.each do |user| %>
+<ol>
+Username
+Votes <%= Vote.where(user_id:user.id).count =%>
+<br>
+Joined
+</ol>
+  <% end %>
+  </ul>
+
+

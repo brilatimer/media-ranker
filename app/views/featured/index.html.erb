@@ -7,7 +7,7 @@
   <% @works.where(category: 'album' ).limit(10).sort.each do |work|  %>
     <ol>
      Votes: <%= Vote.where(work_id:work.id).count =%>
-      <%= link_to work.title, work_path(work.id), class:"olnk" %>
+      <%= link_to work.title, work_path(work.id), class:"link_to" %>
       <%= work[:category] %>
       <%= work[:creator] %>
       <%= work[:pubolcation_year] %>
@@ -27,7 +27,7 @@
   <% @works.where(category: 'book' ).limit(10).sort.each do |work|  %>
     <ol>
      Votes: <%= Vote.where(work_id:work.id).count =%>
-      <%= link_to work.title, work_path(work.id), class:"olnk" %>
+      <%= link_to work.title, work_path(work.id), class:"link" %>
       <%= work[:category] %>
       <%= work[:creator] %>
       <%= work[:pubolcation_year] %>
@@ -47,7 +47,7 @@
   <% @works.where(category: 'movie' ).limit(10).sort.each do |work|  %>
     <ol>
      Votes: <%= Vote.where(work_id:work.id).count =%>
-      <%= link_to work.title, work_path(work.id), class:"olnk" %>
+      <%= link_to work.title, work_path(work.id), class:"link" %>
       <%= work[:category] %>
       <%= work[:creator] %>
       <%= work[:pubolcation_year] %>
