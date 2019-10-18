@@ -9,7 +9,8 @@ Rails.application.routes.draw do
   get "/users/current", to: "users#current", as: "current_user"
 
   get '/vote/:id', to: 'votes#vote_by_work_id', as: 'vote_by_work_id'
-  
+  get '/featured', to: 'featured#index'
+
   # get '/users', to: 'users#index', as: 'users'
   # get '/users/new', to: 'users#new', as: 'new_user'
   # post '/users', to: 'users#create'
