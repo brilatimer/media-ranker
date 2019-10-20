@@ -9,6 +9,6 @@ class VotesController < ApplicationController
     vote.user_id = @user.id
     successful = vote.save
     
-    redirect_to root_path
+    redirect_to works_path
   end
 end
