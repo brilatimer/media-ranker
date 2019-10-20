@@ -18,12 +18,14 @@
         <li>
           <%= link_to "View Top Media", featured_path %>
         </li>
-
+         <li>
+          <%= link_to "All Media", works_path %>
+        </li>
         <li>
           <%= link_to "New Media", new_work_path %>
         </li>
-        <li>
-          <%= link_to "All Media", works_path %>
+         <li>
+          <%= link_to "View All Users", users_path %>
         </li>
 
                 <% if session[:user_id].nil? %>

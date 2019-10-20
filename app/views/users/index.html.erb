@@ -11,4 +11,15 @@ Joined
   <% end %>
   </ul>
 
+<ul>
+    <h3>Username:</h3>
+  <% @users.sort.each do |user|  %>
+    <ol>
+      <%= link_to user.username, users_path(user), class:"link" %>
+    </ol>
+Votes <%= Vote.where(user_id:user.id).count =%>
+Joined <% @created_at.sort.each do |user| %>
+  <% end %>
+</ul>
+
 

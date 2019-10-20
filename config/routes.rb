@@ -10,6 +10,8 @@ Rails.application.routes.draw do
   
   get '/vote/:id', to: 'votes#vote_by_work_id', as: 'vote_by_work_id'
   get '/featured', to: 'featured#index'
+  patch '/users/:id', to: 'users#update'
+
   
   get '/users', to: 'users#index', as: 'users'
   # get '/users/new', to: 'users#new', as: 'new_user'
