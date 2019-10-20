@@ -57,6 +57,15 @@ class UsersController < ApplicationController
     @user.upvote_by current_user
     redirect_to users_path
   end
+  
+  def show
+    @user = User.find_by(id: params[:id])
+    
+    if @user.nil?
+      head :not_found
+      return
+    end
+  end
 end
 
 # <h2>You are logged in as user <%= @current_user.username %></h2>
