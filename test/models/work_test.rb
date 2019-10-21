@@ -62,16 +62,41 @@ class MediaTest < ActiveSupport::TestCase
   describe "custom methods" do
     describe "works with max vote count" do
       before do
-        @work = Work.create catagory: "movie", title: "Mulan", creator: "disney", publication_year: 1990, description: "girl who loves books falls in love with prince"
+        @work = Work.create category: "movie", title: "Mulan", creator: "disney", publication_year: 1990, description: "girl who loves books falls in love with prince"
+        @work_two = Work.create category: "book", title: "Angelina Ballerina", creator: "Shelia Walsh", publication_year: 2008, description: "mouse becomes ballerina"
         
-        @user = User.create name: "muffin"
+        @user = User.create username: "muffin"
+        @user_two = User.create username: "poppy"
         
-        @work_one = Vote.create date: Date.new(2019,10,8), user_id: User.first.id, work_id: @work.id, category: "movie", title: "Mulan", creator: "Disney", publication_year: 1990, description: "girl who loves books falls in love with prince"
-        @work_two = Vote.create date: Date.new(2019,10,9), user_id: User.first.id, work_id: @work.id, category: "book", title: "Angelina Ballerina", creator: "Shelia Walsh", publication_year: 2008, description: "mouse becomes a ballerina"
-        @work_three = Vote.create date: Date.new(2019,10,10), user_id: User.first.id, work_id: @driver.id, category: "album", title: "Surfer Girl", creator: "Beach Boys", publication_year: 1963, description: "third studio album by the Beach Boys"
+        @vote_one = Vote.create user_id: @user.id, work_id: @work.id
+        @vote_two = Vote.create user_id: @user_two.id, work_id: @work.id
+        @vote_three = Vote.create user_id: @user.id, work_id: @work_two.id
       end
+      
       it "must aggregate works with max vote count" do
-        expect(@work.featured).must_equal 3
+        expect(Work.featured.id).must_equal @work.id
+      end
+    end
+    
+    describe "works that have been sorted to show top ten" do
+      before do
+        @work = Work.create category: "album", title: "Mulan", creator: "disney", publication_year: 1990, description: "girl who loves books falls in love with prince"
+        @work_two = Work.create category: "album", title: "Angelina Ballerina", creator: "Shelia Walsh", publication_year: 2008, description: "mouse becomes ballerina"
+        @work_three = Work.create category: "album", title: "Surfer Girl", creator: "Beach Boys", publication_year: 1963, description: "third studio album by the Beach Boys"
+        
+        @user = User.create username: "muffin"
+        @user_two = User.create username: "poppy"
+        
+        @vote_one = Vote.create user_id: @user.id, work_id: @work.id
+        @vote_two = Vote.create user_id: @user_two.id, work_id: @work.id
+        @vote_three = Vote.create user_id: @user.id, work_id: @work_two.id
+      end
+      
+      it "must sort works to show top ten based on votes" do
+        sorted = Work.sort("album")
+        expect(sorted[0].id).must_equal @work.id
+        expect(sorted[1].id).must_equal @work_two.id
+        expect(sorted[3].id).must_equal @work_three.id
       end
     end
   end
