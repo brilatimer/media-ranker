@@ -4,6 +4,9 @@ class Work < ApplicationRecord
   has_many :votes
   
   def self.featured
+    if Vote.count == 0
+      return nil
+    end
     featured_work = Work.all.max_by do |work|
       work.votes.count 
     end

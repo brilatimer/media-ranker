@@ -78,6 +78,17 @@ class MediaTest < ActiveSupport::TestCase
       end
     end
     
+    # this is my edge case
+    describe "works with no votes" do
+      before do
+      end
+      
+      it "must aggregate featured works with no votes" do
+        Vote.destroy_all
+        expect(Work.featured).must_equal nil
+      end
+    end
+    
     describe "works that have been sorted to show top ten" do
       before do
         @work = Work.create category: "album", title: "Mulan", creator: "disney", publication_year: 1990, description: "girl who loves books falls in love with prince"

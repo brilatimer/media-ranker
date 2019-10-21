@@ -1,4 +1,5 @@
 <h2>Media Spotlight: 
+<% if @featured_work != nil %>
   <% @featured_work %> 
         <%= link_to @featured_work.title, work_path(@featured_work.id), class:"link_to" %>
 by <%= @featured_work.creator %>
@@ -7,6 +8,7 @@ by <%= @featured_work.creator %>
 <p>
 <%= Vote.where(work_id:@featured_work.id).count =%> votes - <%= @featured_work.description %> 
 </p>
+<% end %>
 
 <h3>Top Albums</h3>
 <ul>
