@@ -20,6 +20,16 @@ class VoteTest < ActiveSupport::TestCase
       expect(new_vote.errors.messages).must_include :user
       expect(new_vote.errors.messages[:user]).must_equal ["must exist", "can't be blank"]
     end
+    
+    it "must have a work" do
+      # Arrange
+      new_vote.work = nil
+      
+      # Assert
+      expect(new_vote.valid?).must_equal false
+      expect(new_vote.errors.messages).must_include :work
+      expect(new_vote.errors.messages[:work]).must_equal ["must exist", "can't be blank"]
+    end
   end
 end
 end
