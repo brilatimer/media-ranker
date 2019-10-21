@@ -59,35 +59,21 @@ class MediaTest < ActiveSupport::TestCase
     end
   end
   
-  # # Tests for methods you create should go here
-  # describe "custom methods" do
-  #   describe "user login, logout, current user, upvote" do
-  #     before do
-  #       @work = Work.create catagory: "movie", title: "Mulan", creator: "disney", publication_year: 1990, description: "girl who loves books falls in love with prince"
-  
-  #       @user = User.create name: "muffin"
-  
-  #       @vote1 = Vote.create date: Date.new(2019,10,8), user_id: User.first.id, work_id: @work.id, cost: "2310", rating: "5"
-  #       @vote2 = Vote.create date: Date.new(2019,10,9), user_id: User.first.id, work_id: @work.id, cost: "10", rating: "3"
-  #       @vote3 = Vote.create date: Date.new(2019,10,10), user_id: User.first.id, work_id: @driver.id, cost: "31", rating: "1"
-  #     end
-  #     it "must calculate the correct average rating" do
-  #       expect(@work.avg_rating).must_equal 3
-  #     end
-  #     it "must calculate the correct total earnings" do
-  #       expect(@work.total_earnings).must_equal 1879.48
-  #     end
-  #   end
-  #   describe "can go online" do
-  #     # Your code here
-  #   end
-  
-  #   describe "can go offline" do
-  #     # Your code here
-  #   end
-  
-  #   # You may have additional methods to test
-  # end
+  describe "custom methods" do
+    describe "works with max vote count" do
+      before do
+        @work = Work.create catagory: "movie", title: "Mulan", creator: "disney", publication_year: 1990, description: "girl who loves books falls in love with prince"
+        
+        @user = User.create name: "muffin"
+        
+        @work_one = Vote.create date: Date.new(2019,10,8), user_id: User.first.id, work_id: @work.id, category: "movie", title: "Mulan", creator: "Disney", publication_year: 1990, description: "girl who loves books falls in love with prince"
+        @work_two = Vote.create date: Date.new(2019,10,9), user_id: User.first.id, work_id: @work.id, category: "book", title: "Angelina Ballerina", creator: "Shelia Walsh", publication_year: 2008, description: "mouse becomes a ballerina"
+        @work_three = Vote.create date: Date.new(2019,10,10), user_id: User.first.id, work_id: @driver.id, category: "album", title: "Surfer Girl", creator: "Beach Boys", publication_year: 1963, description: "third studio album by the Beach Boys"
+      end
+      it "must aggregate works with max vote count" do
+        expect(@work.featured).must_equal 3
+      end
+    end
+  end
 end
-
 end

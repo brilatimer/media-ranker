@@ -1,4 +1,6 @@
 class Work < ApplicationRecord
+  validates :creator, presence: true
+  validates :title, presence: true
   has_many :votes
   
   def self.featured
