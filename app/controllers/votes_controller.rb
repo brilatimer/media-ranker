@@ -4,11 +4,7 @@ class VotesController < ApplicationController
     @work = Work.find(params[:id])
     @user = User.find(session[:user_id])
     
-    vote = Vote.new
-    vote.work_id = @work.id
-    vote.user_id = @user.id
-    successful = vote.save
-    
+    Vote.create_vote(@work.id, @user.id)
     redirect_to works_path
   end
 end
