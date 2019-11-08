@@ -1,5 +1,4 @@
 require 'test_helper'
-require 'pry'
 class VoteTest < ActiveSupport::TestCase
   
   describe Vote do
